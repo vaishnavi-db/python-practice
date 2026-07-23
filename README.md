@@ -1,8 +1,5 @@
-# python-practice
-my python practice project and mini scripts as i learn 
+## Rock Paper Scissors
 
-## Guess The Number
-A simple CLI game where the user guesses a random number (1-100) 
-with hints (too high/too low) until they get it right.
+A simple CLI game where the user plays against the computer, which picks randomly between rock, paper, and scissors.
 
-Built while learning Python fundamentals - loops, conditionals, and user input.
+Built while learning conditionals and the random module.
