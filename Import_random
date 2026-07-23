@@ -1,0 +1,14 @@
+import random
+
+options = ["rock", "paper", "scissors"]
+computer = random.choice(options)
+player = input("Choose rock, paper, or scissors: ").lower()
+
+if player == computer:
+    print(f"Tie! Both chose {player}")
+elif (player == "rock" and computer == "scissors") or \
+     (player == "paper" and computer == "rock") or \
+     (player == "scissors" and computer == "paper"):
+    print(f"You win! Computer chose {computer}")
+else:
+    print(f"You lose! Computer chose {computer}")
