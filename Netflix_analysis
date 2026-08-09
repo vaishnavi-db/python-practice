@@ -1,0 +1,60 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Simple sample data
+data = {
+    'Title': ['Stranger Things', 'The Crown', 'Bridgerton', 'The Witcher', 'Sex Education',
+              'Ozark', 'Money Heist', 'Chilling Adventures', 'You', 'The Ultimatum'],
+    'Year': [2016, 2016, 2020, 2019, 2019, 2017, 2017, 2018, 2018, 2022],
+    'Country': ['USA', 'UK', 'UK', 'Poland', 'UK', 'USA', 'Spain', 'USA', 'USA', 'USA'],
+    'Rating': [8.7, 8.6, 8.1, 8.2, 8.0, 9.0, 8.8, 8.4, 8.6, 7.8],
+    'Duration': [60, 58, 50, 65, 47, 55, 50, 45, 50, 55]
+}
+
+df = pd.DataFrame(data)
+
+print("🎬 Netflix Shows Analysis\n")
+print(f"Total Shows: {len(df)}")
+print(f"Avg Rating: {df['Rating'].mean():.1f}/10")
+print(f"Year Range: {df['Year'].min()} - {df['Year'].max()}\n")
+
+# Chart 1: Top Shows by Rating
+plt.figure(figsize=(10, 6))
+plt.barh(df['Title'], df['Rating'], color='#E50914')
+plt.xlabel('IMDb Rating', fontweight='bold')
+plt.title('Netflix Shows by Rating', fontweight='bold', fontsize=12)
+plt.xlim(7, 10)
+plt.tight_layout()
+plt.savefig('netflix_ratings.png', dpi=300)
+print("✅ Chart 1: netflix_ratings.png")
+plt.close()
+
+# Chart 2: Shows by Year
+plt.figure(figsize=(10, 6))
+year_count = df['Year'].value_counts().sort_index()
+plt.bar(year_count.index, year_count.values, color='#221F1F', edgecolor='white')
+plt.xlabel('Year', fontweight='bold')
+plt.ylabel('Number of Shows', fontweight='bold')
+plt.title('Netflix Shows Released by Year', fontweight='bold', fontsize=12)
+plt.tight_layout()
+plt.savefig('netflix_by_year.png', dpi=300)
+print("✅ Chart 2: netflix_by_year.png")
+plt.close()
+
+# Chart 3: Duration Distribution
+plt.figure(figsize=(10, 6))
+plt.hist(df['Duration'], bins=8, color='#564D4D', edgecolor='white')
+plt.xlabel('Episode Duration (minutes)', fontweight='bold')
+plt.ylabel('Number of Shows', fontweight='bold')
+plt.title('Netflix Shows - Episode Duration', fontweight='bold', fontsize=12)
+plt.grid(axis='y', alpha=0.3)
+plt.tight_layout()
+plt.savefig('netflix_duration.png', dpi=300)
+print("✅ Chart 3: netflix_duration.png")
+plt.close()
+
+# Save data
+df.to_csv('netflix_shows.csv', index=False)
+print(" Data saved: netflix_shows.csv")
+print("\n✨ Analysis Complete!")
